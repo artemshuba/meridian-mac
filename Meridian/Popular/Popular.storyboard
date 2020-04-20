@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fvK-bS-ZCu">
+    <device id="mac" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Popular-->
+        <scene sceneID="dX7-g7-TgJ">
+            <objects>
+                <viewController title="Popular" id="fvK-bS-ZCu" customClass="PopularViewController" customModule="Meridian" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5hW-sT-TXa">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vEc-hM-HQC">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="yUb-5i-POD">
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wW-tc-nSR">
+                                            <rect key="frame" x="16" y="20" width="115" height="60"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="8wW-tc-nSR" secondAttribute="bottom" constant="20" id="moi-qq-gYd"/>
+                                        <constraint firstItem="8wW-tc-nSR" firstAttribute="leading" secondItem="yUb-5i-POD" secondAttribute="leading" constant="16" id="sqD-sc-xnd"/>
+                                        <constraint firstItem="8wW-tc-nSR" firstAttribute="top" secondItem="yUb-5i-POD" secondAttribute="top" constant="20" id="zsI-jE-RKL"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Bam-Zj-baa" firstAttribute="bottom" secondItem="vEc-hM-HQC" secondAttribute="bottom" id="MP5-3u-eqN"/>
+                            <constraint firstItem="vEc-hM-HQC" firstAttribute="top" secondItem="Bam-Zj-baa" secondAttribute="top" id="RtF-kP-r6y"/>
+                            <constraint firstItem="vEc-hM-HQC" firstAttribute="leading" secondItem="Bam-Zj-baa" secondAttribute="leading" id="Vzr-KV-V6c"/>
+                            <constraint firstItem="Bam-Zj-baa" firstAttribute="trailing" secondItem="vEc-hM-HQC" secondAttribute="trailing" id="zNF-Np-ItQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bam-Zj-baa"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Music" largeTitleDisplayMode="always" id="D8w-I5-lQp"/>
+                    <connections>
+                        <outlet property="tableView" destination="vEc-hM-HQC" id="69w-XH-Kg3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="plT-LP-B3U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990.75" y="-153"/>
+        </scene>
+    </scenes>
+</document>

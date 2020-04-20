@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yvM-ay-nAV">
+    <device id="mac" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Music-->
+        <scene sceneID="E6j-6N-lcQ">
+            <objects>
+                <viewController title="My Music" id="yvM-ay-nAV" customClass="MyMusicViewController" customModule="Meridian" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m1b-MK-CSP">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-Si-K8C">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Dzp-FW-BXy" firstAttribute="trailing" secondItem="YEn-Si-K8C" secondAttribute="trailing" id="0RF-pd-81u"/>
+                            <constraint firstItem="Dzp-FW-BXy" firstAttribute="bottom" secondItem="YEn-Si-K8C" secondAttribute="bottom" id="B78-MT-vvk"/>
+                            <constraint firstItem="YEn-Si-K8C" firstAttribute="leading" secondItem="Dzp-FW-BXy" secondAttribute="leading" id="f76-PY-OaL"/>
+                            <constraint firstItem="YEn-Si-K8C" firstAttribute="top" secondItem="Dzp-FW-BXy" secondAttribute="top" id="hnk-BG-8tK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dzp-FW-BXy"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Music" largeTitleDisplayMode="always" id="HrY-hL-vqN"/>
+                    <connections>
+                        <outlet property="tracksTableView" destination="YEn-Si-K8C" id="5wf-np-30I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9J-z4-TBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990.75" y="-153"/>
+        </scene>
+    </scenes>
+</document>
