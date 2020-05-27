@@ -68,8 +68,6 @@ class AudioPlayer {
 
         player.replaceCurrentItem(with: item)
         play()
-                
-
     }
     
     func play() {
@@ -126,6 +124,10 @@ class AudioPlayer {
         play()
     }
     
+    func seek(to position: TimeInterval) {
+        player.seek(to: CMTime(seconds: position, preferredTimescale: CMTimeScale(1.0)))
+    }
+    
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
@@ -169,8 +171,6 @@ class AudioPlayer {
                 self.pause()
                 return .success
             }
-            
-            return .commandFailed
         }
         
         commandCenter.playCommand.addTarget { [unowned self] event in

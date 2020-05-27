@@ -8,10 +8,12 @@
 
 import UIKit
 import VkSwift
+import SDWebImage
 
 class PlayerView : UIView {
-    
     @IBOutlet private weak var coverView: UIView!
+    @IBOutlet private weak var coverImageView: UIImageView!
+    
     @IBOutlet private weak var playPauseButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var artistLabel: UILabel!
@@ -50,6 +52,7 @@ class PlayerView : UIView {
         player?.delegate = self
         
         coverView.layer.cornerRadius = 10
+        coverImageView.sd_imageTransition = .fade
     }
     
     @IBAction private func playPauseButtonClick(_ sender: Any) {
@@ -64,6 +67,10 @@ class PlayerView : UIView {
     
     @IBAction private func nextButtonClick(_ sender: Any) {
         player?.switchNext()
+    }
+    
+    @IBAction private func positionSliderValueChanged(_ sender: Any) {
+        player?.seek(to: TimeInterval(positionSlider.value))
     }
 }
 
@@ -80,6 +87,8 @@ extension PlayerView : AudioPlayerDelegate {
         
         positionSlider.value = 0
         positionSlider.maximumValue = Float(track?.duration ?? 0)
+        
+        coverImageView.sd_setImage(with: track?.coverUrl)
     }
     
     func audioPlayer(_ audioPlayer: AudioPlayer, didChangePositionTo position: TimeInterval) {

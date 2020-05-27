@@ -42,6 +42,7 @@
 		5E2D3149243A3FB800C6DE27 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D3147243A3FB800C6DE27 /* TrackCell.swift */; };
 		5E2D314A243A3FB800C6DE27 /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2D3148243A3FB800C6DE27 /* TrackCell.xib */; };
 		5E2D314C243A424500C6DE27 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D314B243A424500C6DE27 /* AudioPlayer.swift */; };
+		5E5C4239247ED49500B66AE9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C4238247ED49500B66AE9 /* SDWebImage */; };
 		5E7C921F243B776B004EC5BC /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7C921E243B776B004EC5BC /* PlayerView.xib */; };
 		5E7C9221243B7773004EC5BC /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7C9220243B7773004EC5BC /* PlayerView.swift */; };
 		5E7C9223243B779E004EC5BC /* View+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7C9222243B779E004EC5BC /* View+LoadFromNib.swift */; };
@@ -144,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5C4239247ED49500B66AE9 /* SDWebImage in Frameworks */,
 				5EC5C0E3243CC7B90010E4C4 /* VkSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +549,7 @@
 			name = Meridian;
 			packageProductDependencies = (
 				5EC5C0E2243CC7B90010E4C4 /* VkSwift */,
+				5E5C4238247ED49500B66AE9 /* SDWebImage */,
 			);
 			productName = VkMusicApp;
 			productReference = 5EBD6140242552FA0099EDF2 /* Meridian.app */;
@@ -598,6 +601,9 @@
 				Base,
 			);
 			mainGroup = 5EBD6137242552FA0099EDF2;
+			packageReferences = (
+				5E5C4237247ED49500B66AE9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 5EBD6141242552FA0099EDF2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -951,7 +957,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		5E5C4237247ED49500B66AE9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		5E5C4238247ED49500B66AE9 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E5C4237247ED49500B66AE9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		5EC5C0E2243CC7B90010E4C4 /* VkSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = VkSwift;

@@ -14,9 +14,6 @@ let package = Package(
         .library(
             name: "VkSwift",
             targets: ["VkSwift"]),
-        .executable(
-            name: "VkSwift-TestApp",
-            targets: ["VkSwift-TestApp"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -28,9 +25,6 @@ let package = Package(
         .target(
             name: "VkSwift",
             dependencies: []),
-        .target(
-            name: "VkSwift-TestApp",
-            dependencies: ["VkSwift"]),
         .testTarget(
             name: "VkSwift-Tests",
             dependencies: ["VkSwift"]),

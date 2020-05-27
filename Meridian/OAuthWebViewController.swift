@@ -48,8 +48,6 @@ class OAuthWebViewController : UIViewController {
 
 extension OAuthWebViewController : WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print(webView.url)
-        
         guard let url = webView.url,
             url.absoluteString.starts(with: "https://oauth.vk.com/blank.html") else { return }
         

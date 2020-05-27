@@ -22,28 +22,37 @@ struct Track {
     
     let url: URL?
     
-    init(id: Int, title: String, artist: String, duration: TimeInterval, url: URL?) {
+    let coverUrl: URL?
+    
+    init(id: Int, title: String, artist: String, duration: TimeInterval, url: URL?, coverUrl: URL?) {
         self.id = id
         self.title = title
         self.artist = artist
         self.duration = duration
         self.displayDuration = duration.durationString
         self.url = url
+        self.coverUrl = coverUrl
     }
 }
 
 extension Track {
     init(vkAudio: VkAudio) {
         var url: URL?
+        var coverUrl: URL?
         
         if let urlString = vkAudio.url {
             url = URL(string: urlString)
+        }
+        
+        if let coverUrlString = vkAudio.album?.thumb?.photo270 {
+            coverUrl = URL(string: coverUrlString)
         }
         
         self.init(id: vkAudio.id,
                   title: vkAudio.title,
                   artist: vkAudio.artist,
                   duration: vkAudio.duration,
-                  url: url)
+                  url: url,
+                  coverUrl: coverUrl)
     }
 }

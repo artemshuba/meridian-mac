@@ -16,11 +16,17 @@ public struct VkAudio : Codable {
     
     public let url: String?
     
-    public init(id: Int, title: String, artist: String, duration: Double, url: String?) {
+    public let accessKey: String?
+    
+    public let album: VkAudioAlbum?
+    
+    public init(id: Int, title: String, artist: String, duration: Double, url: String?, accessKey: String?, album: VkAudioAlbum?) {
         self.id = id
         self.title = title
         self.artist = artist
         self.duration = duration
         self.url = url
+        self.accessKey = accessKey
+        self.album = album
     }
 }
