@@ -44,7 +44,7 @@ class LoginPresenter : Presenter {
                     // Save token
                     // Navigate to main
                     print("Login success")
-                    self.router.routeToHome()
+                    self.router.routeToMain()
                 }
             }
         }
@@ -73,6 +73,6 @@ extension LoginPresenter : OAuthWebViewControllerDelegate {
         
         vkLoginService.setToken(accessToken)
         appSettings.accessToken = accessToken
-        router.routeToHome()
+        router.routeToMain()
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class LoginRouter : Router {
     weak var sourceViewController: UIViewController?
     
-    func routeToHome() {
+    func routeToMain() {
         let mainViewController = MainViewBuilder.build(withContext: .default)
 
         setRootViewController(mainViewController)

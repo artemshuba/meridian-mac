@@ -31,7 +31,7 @@ class InitializationPresenter : Presenter {
             router.routeToLogin()
         } else {
             vk.accessToken = appSettings.accessToken
-            router.routeToHome()
+            router.routeToMain()
         }
     }
 }

@@ -15,7 +15,7 @@ class InitializationRouter : Router {
         setRootViewController(loginViewController)
     }
     
-    func routeToHome() {
+    func routeToMain() {
         let mainViewController = MainViewBuilder.build(withContext: .default)
         
         setRootViewController(mainViewController)

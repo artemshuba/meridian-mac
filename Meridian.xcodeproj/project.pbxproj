@@ -126,7 +126,7 @@
 		5EBD615A242552FB0099EDF2 /* MeridianTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeridianTests.swift; sourceTree = "<group>"; };
 		5EBD615C242552FB0099EDF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EBD6165242553060099EDF2 /* Meridian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meridian.entitlements; sourceTree = "<group>"; };
-		5EC5C0DF243CC6DB0010E4C4 /* vklib-swift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "vklib-swift"; path = "../vklib-swift"; sourceTree = "<group>"; };
+		5EC5C0DF243CC6DB0010E4C4 /* vklib-swift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "vklib-swift"; sourceTree = "<group>"; };
 		5EC5C0E4243CCD6F0010E4C4 /* MainMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresenter.swift; sourceTree = "<group>"; };
 		5EC5C0E7243CCDA50010E4C4 /* MainMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuItem.swift; sourceTree = "<group>"; };
 		5EC5C0E9243CCE1D0010E4C4 /* MainMenuGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuGroup.swift; sourceTree = "<group>"; };
