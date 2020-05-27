@@ -13,7 +13,7 @@ class PopularPresenter : Presenter {
     private let vkMusicService: VkMusicService
     private let audioPlayer: AudioPlayer
     
-    private (set) var tracks: [VkAudio] = []
+    private (set) var tracks: [Track] = []
     
     weak var view: PopularView?
     
@@ -39,7 +39,7 @@ class PopularPresenter : Presenter {
                 
                 switch result {
                 case .success(let tracks):
-                    self.tracks = tracks
+                    self.tracks = tracks.map { Track(vkAudio: $0) }
                     self.view?.reload()
                     
                 case .failure(let error):

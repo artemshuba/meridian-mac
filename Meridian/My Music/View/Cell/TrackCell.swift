@@ -15,16 +15,12 @@ class TrackCell: UITableViewCell {
     @IBOutlet private weak var artistLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
     
-    func configure(with track: VkAudio) {
+    func configure(with track: Track) {
         titleLabel.text = track.title
         artistLabel.text = track.artist
-        durationLabel.text = stringFromTime(interval: track.duration)
+        durationLabel.text = track.displayDuration
+        
+        // Fade out content view if track doesn't have url
+        contentView.alpha = track.url == nil ? 0.3 : 1.0
     }
-    
-    func stringFromTime(interval: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        return formatter.string(from: interval)!
-    }
-
 }

@@ -8,21 +8,23 @@
 
 import Foundation
 import AVFoundation
-import VkSwift
 import MediaPlayer
 
 protocol AudioPlayerDelegate : class {
     func audioPlayer(_ audioPlayer: AudioPlayer, didChangeState isPlaying: Bool)
     
-    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeCurrentTrack track: VkAudio?)
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeCurrentTrack track: Track?)
+    
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangePositionTo position: TimeInterval)
 }
 
 class AudioPlayer {
     private var player: AVPlayer
-    private var playlist: [VkAudio] = []
+    private var playlist: [Track] = []
     private let commandCenter = MPRemoteCommandCenter.shared()
+    private var timer: Timer?
     
-    private var currentTrack: VkAudio? {
+    private var currentTrack: Track? {
         didSet {
             delegate?.audioPlayer(self, didChangeCurrentTrack: currentTrack)
             
@@ -54,11 +56,11 @@ class AudioPlayer {
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
-    func setPlaylist(tracks: [VkAudio]) {
+    func setPlaylist(tracks: [Track]) {
         playlist = tracks
     }
     
-    func play(track: VkAudio, from tracks: [VkAudio]) {
+    func play(track: Track, from tracks: [Track]) {
         self.playlist = tracks
         self.currentTrack = track
         
@@ -73,11 +75,13 @@ class AudioPlayer {
     func play() {
         player.play()
         isPlaying = true
+        startTimer()
     }
     
     func pause() {
         player.pause()
         isPlaying = false
+        timer?.invalidate()
     }
     
     func switchPrevious() {
@@ -122,12 +126,19 @@ class AudioPlayer {
         play()
     }
     
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.delegate?.audioPlayer(self, didChangePositionTo: self.player.currentTime().seconds)
+        })
+    }
+    
     // TODO: move to extension
-    private func playerItem(from track: VkAudio) -> AVPlayerItem? {
-        guard let trackUrl = track.url,
-            let url = URL(string: trackUrl) else { return nil }
+    private func playerItem(from track: Track) -> AVPlayerItem? {
+        guard let trackUrl = track.url else { return nil }
         
-        return AVPlayerItem(url: url)
+        return AVPlayerItem(url: trackUrl)
     }
     
     @objc
@@ -198,7 +209,7 @@ class AudioPlayer {
         }
     }
     
-    func setNowPlayingPlaybackInfo(_ track: VkAudio) {
+    func setNowPlayingPlaybackInfo(_ track: Track) {
         let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
         var nowPlayingInfo = nowPlayingInfoCenter.nowPlayingInfo ?? [String: Any]()
         

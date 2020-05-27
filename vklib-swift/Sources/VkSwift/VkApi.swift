@@ -41,7 +41,7 @@ public class VkApi {
             return .failure(VkRequestError.noData)
         }
         
-        print("Response: \(String(data: data, encoding: .utf8) ?? "")")
+//        print("Response: \(String(data: data, encoding: .utf8) ?? "")")
         
         do {
             let decoder = JSONDecoder()

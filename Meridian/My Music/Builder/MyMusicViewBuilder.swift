@@ -6,10 +6,10 @@
 //  Copyright © 2020 Artem Shuba. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MyMusicViewBuilder {
-    static func build(withContext appContext: ApplicationContext) -> MyMusicViewController {
+    static func build(withContext appContext: ApplicationContext) -> UIViewController {
         let storyboard = Storyboard.myMusic
         let presenter = MyMusicPresenter(vkMusicService: appContext.vkMusicService, audioPlayer: appContext.audioPlayer)
         

@@ -13,7 +13,7 @@ class MyMusicPresenter : Presenter {
     private let vkMusicService: VkMusicService
     private let audioPlayer: AudioPlayer
     
-    private (set) var tracks: [VkAudio] = []
+    private (set) var tracks: [Track] = []
     
     weak var view: MyMusicView?
     
@@ -39,7 +39,7 @@ class MyMusicPresenter : Presenter {
                 
                 switch result {
                 case .success(let response):
-                    self.tracks = response.items
+                    self.tracks = response.items.map { Track(vkAudio: $0) }
                     self.view?.reload()
                     
                 case .failure(let error):

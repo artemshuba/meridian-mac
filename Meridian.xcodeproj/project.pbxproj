@@ -61,6 +61,8 @@
 		5EC5C0EC243CF3EA0010E4C4 /* Popular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC5C0EB243CF3EA0010E4C4 /* Popular.storyboard */; };
 		5EC5C0EF243CF4370010E4C4 /* PopularPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC5C0EE243CF4370010E4C4 /* PopularPresenter.swift */; };
 		5EC5C0F2243CF4C20010E4C4 /* PopularViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC5C0F1243CF4C20010E4C4 /* PopularViewBuilder.swift */; };
+		5EE1886A247E989400AF6FC2 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE18869247E989400AF6FC2 /* Track.swift */; };
+		5EE18872247EA03300AF6FC2 /* TimeInterval+DurationString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE18871247EA03300AF6FC2 /* TimeInterval+DurationString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +135,8 @@
 		5EC5C0EB243CF3EA0010E4C4 /* Popular.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popular.storyboard; sourceTree = "<group>"; };
 		5EC5C0EE243CF4370010E4C4 /* PopularPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPresenter.swift; sourceTree = "<group>"; };
 		5EC5C0F1243CF4C20010E4C4 /* PopularViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewBuilder.swift; sourceTree = "<group>"; };
+		5EE18869247E989400AF6FC2 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		5EE18871247EA03300AF6FC2 /* TimeInterval+DurationString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+DurationString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +289,7 @@
 		5E2D311E243A01FA00C6DE27 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5EE1886E247E9B2500AF6FC2 /* Helpers */,
 				5E2D311F243A01FF00C6DE27 /* Extensions */,
 			);
 			path = Utils;
@@ -296,6 +301,7 @@
 				5E2D3120243A021100C6DE27 /* UIApplication+SwitchRootViewController.swift */,
 				5E2D3122243A023000C6DE27 /* UITableViewCell+ReuseIdentifier.swift */,
 				5E7C9222243B779E004EC5BC /* View+LoadFromNib.swift */,
+				5EE18871247EA03300AF6FC2 /* TimeInterval+DurationString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,6 +453,8 @@
 			children = (
 				5E2D30EC2439F7B900C6DE27 /* Common */,
 				5E2D30F62439F89B00C6DE27 /* Services */,
+				5EE1886B247E99BD00AF6FC2 /* Model */,
+				5EE18868247E988100AF6FC2 /* View Model */,
 				5E2D31032439FB3F00C6DE27 /* Initialization */,
 				5E2D30F92439F96B00C6DE27 /* Login */,
 				5E2D310A2439FB8800C6DE27 /* Main */,
@@ -497,6 +505,28 @@
 				5EC5C0F1243CF4C20010E4C4 /* PopularViewBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		5EE18868247E988100AF6FC2 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		5EE1886B247E99BD00AF6FC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5EE18869247E989400AF6FC2 /* Track.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5EE1886E247E9B2500AF6FC2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE1886A247E989400AF6FC2 /* Track.swift in Sources */,
 				5E2D30F12439F7F200C6DE27 /* UserDefaultsStorage.swift in Sources */,
 				5E2D3128243A068800C6DE27 /* VkLoginService.swift in Sources */,
 				5E2D312B243A087500C6DE27 /* LoginRouter.swift in Sources */,
@@ -641,6 +672,7 @@
 				5E2D313A243A10A300C6DE27 /* MyMusicViewController.swift in Sources */,
 				5E2D3145243A356900C6DE27 /* MyMusicViewBuilder.swift in Sources */,
 				5E2D30F52439F87700C6DE27 /* ApplicationContext.swift in Sources */,
+				5EE18872247EA03300AF6FC2 /* TimeInterval+DurationString.swift in Sources */,
 				5E7C9221243B7773004EC5BC /* PlayerView.swift in Sources */,
 				5E2D314C243A424500C6DE27 /* AudioPlayer.swift in Sources */,
 				5E2D3123243A023000C6DE27 /* UITableViewCell+ReuseIdentifier.swift in Sources */,

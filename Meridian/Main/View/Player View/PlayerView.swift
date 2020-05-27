@@ -16,6 +16,11 @@ class PlayerView : UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var artistLabel: UILabel!
     
+    @IBOutlet private weak var positionLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    
+    @IBOutlet private weak var positionSlider: UISlider!
+    
     @IBOutlet private weak var previousButton: UIButton!
     @IBOutlet private weak var nextButon: UIButton!
     
@@ -67,8 +72,18 @@ extension PlayerView : AudioPlayerDelegate {
         playPauseButton.setImage(UIImage(systemName: isPlaying ? "pause.fill" : "play.fill"), for: .normal)
     }
     
-    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeCurrentTrack track: VkAudio?) {
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeCurrentTrack track: Track?) {
         titleLabel.text = track?.title
         artistLabel.text = track?.artist
+        positionLabel.text = "0:00"
+        durationLabel.text = track?.duration.durationString
+        
+        positionSlider.value = 0
+        positionSlider.maximumValue = Float(track?.duration ?? 0)
+    }
+    
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangePositionTo position: TimeInterval) {
+        positionLabel.text = position.durationString
+        positionSlider.value = Float(position)
     }
 }
