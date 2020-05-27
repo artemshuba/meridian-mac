@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol PopularView : class {
+protocol PopularView : class, LoadableView {
     func reload()
 }
 
 class PopularViewController : UIViewController {
-    
     @IBOutlet private weak var tableView: UITableView!
-       
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    
     private let presenter: PopularPresenter
     
     init?(coder: NSCoder, presenter: PopularPresenter) {
@@ -69,5 +69,15 @@ extension PopularViewController : UITableViewDelegate {
 extension PopularViewController : PopularView {
     func reload() {
         tableView.reloadData()
+    }
+    
+    func startActivity() {
+        tableView.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivity() {
+        tableView.isHidden = false
+        activityIndicator.stopAnimating()
     }
 }

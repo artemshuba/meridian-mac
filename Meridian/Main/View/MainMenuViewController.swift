@@ -30,13 +30,15 @@ class MainMenuViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
+        setupViews()
+    }
+    
+    private func setupViews() {
         tableView.register(MainMenuCell.nib, forCellReuseIdentifier: MainMenuCell.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
-
         let initialViewController = MyMusicViewBuilder.build(withContext: .default)
         splitViewController?.showDetailViewController(initialViewController, sender: self)
         

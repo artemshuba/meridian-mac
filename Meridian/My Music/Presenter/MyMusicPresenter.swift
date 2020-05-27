@@ -33,9 +33,13 @@ class MyMusicPresenter : Presenter {
     }
     
     private func loadTracks() {
+        view?.startActivity()
+        
         vkMusicService.fetchTracks { [weak self] result in
             DispatchQueue.main.async {
-                guard let `self` = self else { return }
+                guard let self = self else { return }
+                
+                self.view?.stopActivity()
                 
                 switch result {
                 case .success(let response):

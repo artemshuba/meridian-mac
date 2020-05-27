@@ -8,12 +8,13 @@
 
 import UIKit
 
-protocol MyMusicView : class {
+protocol MyMusicView : class, LoadableView {
     func reload()
 }
 
 class MyMusicViewController : UIViewController {
     @IBOutlet private weak var tracksTableView: UITableView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     private let presenter: MyMusicPresenter
     
@@ -68,5 +69,15 @@ extension MyMusicViewController : UITableViewDelegate {
 extension MyMusicViewController : MyMusicView {
     func reload() {
         tracksTableView.reloadData()
+    }
+    
+    func startActivity() {
+        tracksTableView.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivity() {
+        tracksTableView.isHidden = false
+        activityIndicator.stopAnimating()
     }
 }
