@@ -8,6 +8,17 @@
 
 import Foundation
 
+enum MainMenuItemType {
+    case myMusic
+    case news
+    case wall
+    case popular
+    case friends
+    case communities
+}
+
 struct MainMenuItem {
+    let type: MainMenuItemType
+    
     let title: String
 }

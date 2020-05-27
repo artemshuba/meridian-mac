@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol MainMenuViewControllerDelegate : class {
-    func mainMenu(_ mainMenuViewController: MainMenuViewController, didSelectRowAt indexPath: IndexPath)
-}
-
 class MainMenuViewController : UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var playerView: PlayerView!
@@ -20,9 +16,7 @@ class MainMenuViewController : UIViewController {
     private weak var player: AudioPlayer?
     
     private var selectedIndexPath: IndexPath?
-    
-    weak var menuDelegate: MainMenuViewControllerDelegate?
-    
+
     init?(coder: NSCoder, presenter: MainMenuPresenter, player: AudioPlayer) {
         self.presenter = presenter
         self.player = player
@@ -40,6 +34,8 @@ class MainMenuViewController : UIViewController {
         tableView.register(MainMenuCell.nib, forCellReuseIdentifier: MainMenuCell.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
 
         let initialViewController = MyMusicViewBuilder.build(withContext: .default)
         splitViewController?.showDetailViewController(initialViewController, sender: self)
@@ -77,30 +73,19 @@ extension MainMenuViewController : UITableViewDataSource {
 
 extension MainMenuViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //menuDelegate?.mainMenu(self, didSelectRowAt: indexPath)
+        // Avoid navigation to the same page
+        guard tableView.indexPathForSelectedRow != indexPath else { return }
         
         if let selectedIndexPath = tableView.indexPathForSelectedRow,
             let cell = tableView.cellForRow(at: selectedIndexPath) {
             cell.setSelected(false, animated: true)
         }
         
-        var detailViewController: UIViewController? = nil
-        
-        switch indexPath.section {
-        case 0:
-            detailViewController = MyMusicViewBuilder.build(withContext: .default)
-        case 1:
-            detailViewController = PopularViewBuilder.build(withContext: .default)
-        default:
-            break
-        }
-
-        if let detailViewController = detailViewController {
-            splitViewController?.showDetailViewController(detailViewController, sender: self)
-        }
+        presenter.selectItem(at: indexPath)
     }
 }
 
+// Hack to avoid default blue selection from main menu
 extension MainMenuViewController : MainMenuCellDelegate {
     func mainMenuCellDidSelect(_ cell: MainMenuCell) {
         if let selectedIndexPath = selectedIndexPath,

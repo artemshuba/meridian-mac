@@ -12,22 +12,16 @@ class MainViewBuilder {
     static func build(withContext appContext: ApplicationContext) -> MainSplitViewController {
         let storyboard = Storyboard.main
         let presenter = MainPresenter()
-        let menuPresenter = MainMenuPresenter()
+        let router = MainMenuRouter()
+        let menuPresenter = MainMenuPresenter(router: router)
         
         let viewController = MainSplitViewController(presenter: presenter)
-        
-//        guard let viewController = storyboard.instantiateInitialViewController(creator: { coder in
-//            MainSplitViewController(coder: coder, presenter: presenter)
-//        }) else {
-//            fatalError("Unable to initialize initial view controller")
-//        }
-//
-//
         
         let menuViewController = storyboard.instantiateViewController(identifier: String(describing: MainMenuViewController.self), creator: { coder in
             MainMenuViewController(coder: coder, presenter: menuPresenter, player: appContext.audioPlayer)
         })
         
+        router.sourceViewController = viewController
         viewController.viewControllers = [menuViewController]
 
         return viewController

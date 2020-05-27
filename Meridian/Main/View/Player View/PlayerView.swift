@@ -74,6 +74,8 @@ class PlayerView : UIView {
     }
 }
 
+// MARK: - AudioPlayerDelegate
+
 extension PlayerView : AudioPlayerDelegate {
     func audioPlayer(_ audioPlayer: AudioPlayer, didChangeState isPlaying: Bool) {
         playPauseButton.setImage(UIImage(systemName: isPlaying ? "pause.fill" : "play.fill"), for: .normal)

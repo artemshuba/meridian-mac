@@ -9,9 +9,11 @@
 import Foundation
 
 class MainMenuPresenter : Presenter {
+    private let router: MainMenuRouter
     private let menuGroups: [MainMenuGroup]
     
-    init() {
+    init(router: MainMenuRouter) {
+        self.router = router
         self.menuGroups = MainMenuPresenter.buildMenu()
     }
     
@@ -35,25 +37,31 @@ class MainMenuPresenter : Presenter {
         menuGroups[indexPath.section].items[indexPath.row].title
     }
     
+    func selectItem(at indexPath: IndexPath) {
+        let menuItem = menuGroups[indexPath.section].items[indexPath.row]
+        
+        router.routeToMenuItem(menuItem)
+    }
+    
     private static func buildMenu() -> [MainMenuGroup] {
         [
             MainMenuGroup(
                 title: "My Music",
                 items: [
-                    MainMenuItem(title: "Songs"),
-                    MainMenuItem(title: "News"),
-                    MainMenuItem(title: "Wall")
+                    MainMenuItem(type: .myMusic, title: "Songs"),
+                    MainMenuItem(type: .news, title: "News"),
+                    MainMenuItem(type: .wall, title: "Wall")
                 ]),
             MainMenuGroup(
                 title: "Explore",
                 items: [
-                    MainMenuItem(title: "Popular")
+                    MainMenuItem(type: .popular, title: "Popular")
                 ]),
             MainMenuGroup(
                 title: "People",
                 items: [
-                    MainMenuItem(title: "Friends"),
-                    MainMenuItem(title: "Communities")
+                    MainMenuItem(type: .friends, title: "Friends"),
+                    MainMenuItem(type: .communities, title: "Communities")
                 ])
         ]
     }
