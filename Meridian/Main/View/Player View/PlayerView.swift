@@ -94,7 +94,7 @@ extension PlayerView : AudioPlayerDelegate {
     }
     
     func audioPlayer(_ audioPlayer: AudioPlayer, didChangePositionTo position: TimeInterval) {
-        positionLabel.text = position.durationString
+        positionLabel.text = position.isNaN ? "0:00" : position.durationString
         positionSlider.value = Float(position)
     }
 }

@@ -10,11 +10,11 @@ import Foundation
 
 class MainMenuPresenter : Presenter {
     private let router: MainMenuRouter
-    private let menuGroups: [MainMenuGroup]
+    private let menuItems: [MainMenuItem]
     
     init(router: MainMenuRouter) {
         self.router = router
-        self.menuGroups = MainMenuPresenter.buildMenu()
+        self.menuItems = MainMenuPresenter.buildMenu()
     }
     
     func load() {
@@ -22,47 +22,34 @@ class MainMenuPresenter : Presenter {
     }
     
     func numberOfGroups() -> Int {
-        menuGroups.count
+        1
     }
     
     func numberOfItems(inGroup group: Int) -> Int {
-        menuGroups[group].items.count
+        menuItems.count
     }
     
     func title(forGroup group: Int) -> String {
-        menuGroups[group].title
+        ""
     }
     
     func title(forItemAt indexPath: IndexPath) -> String {
-        menuGroups[indexPath.section].items[indexPath.row].title
+        menuItems[indexPath.row].title
     }
     
     func selectItem(at indexPath: IndexPath) {
-        let menuItem = menuGroups[indexPath.section].items[indexPath.row]
+        let menuItem = menuItems[indexPath.row]
         
         router.routeToMenuItem(menuItem)
     }
     
-    private static func buildMenu() -> [MainMenuGroup] {
+    private static func buildMenu() -> [MainMenuItem] {
         [
-            MainMenuGroup(
-                title: "My Music",
-                items: [
-                    MainMenuItem(type: .myMusic, title: "Songs"),
-                    MainMenuItem(type: .news, title: "News"),
-                    MainMenuItem(type: .wall, title: "Wall")
-                ]),
-            MainMenuGroup(
-                title: "Explore",
-                items: [
-                    MainMenuItem(type: .popular, title: "Popular")
-                ]),
-            MainMenuGroup(
-                title: "People",
-                items: [
-                    MainMenuItem(type: .friends, title: "Friends"),
-                    MainMenuItem(type: .communities, title: "Communities")
-                ])
+            
+            MainMenuItem(type: .myMusic, title: "My music"),
+            MainMenuItem(type: .popular, title: "Popular"),
+            MainMenuItem(type: .friends, title: "Friends"),
+            MainMenuItem(type: .communities, title: "Communities")
         ]
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 
 extension TimeInterval {
     var durationString: String {
+        guard !self.isNaN else { return "" }
+        
         let time = NSInteger(self)
         let seconds = time % 60
         let minutes = (time / 60) % 60
